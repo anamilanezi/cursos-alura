@@ -57,3 +57,38 @@ var numeroDePalavras = frase.split(" ").length;
 var tamanhoFrase = $('#tamanho-frase');
 tamanhoFrase.text(numeroDePalavras);
 ```
+
+## Identificando eventos e texto inserido em um input
+
+A função `on()` do jQuery, recebe como parâmetro dois argumentos: O primeiro sendo uma string com o nome do evento que ela vai passar a escutar e o segundo uma função, com a ação (função) que ela deve executar quando o evento acontecer. O nome do evento são os nomes do eventos comuns do Javascript, como de `click`, `input`, `focus`, `dblclick` entre outros. Se quisermos por exemplo, ao digitar em um campo de `<textarea>` identificar qual o texto inserido dentro dela, contar as palavras e caracteres, podemos:
+- Após atribuir o campo de texto a uma variável utilizando sua classe, usar a função .on(), usar "input" para reconhecer o evento de digitar no campo, e chamar uma função;
+- Dentro da função atribuímos `campo.val()` a uma variável que vai identificar o valor digitado;
+- No exemplo ainda alteramos no HTML a contagem de palavras e caracteres de acordo com o que o usuário digita.
+```swift
+// HTML
+<textarea class="campo-digitacao" id="" cols="30" rows="10"></textarea>
+<ul>
+    <li><span id="contador-caracteres">0</span> caracteres</li>
+    <li><span id="contador-palavras">0</span> palavras</li>
+</ul>
+```
+
+```swift
+//SCRIPT
+var campo = $(".campo-digitacao");
+
+campo.on("input", function() {
+    var conteudo = campo.val();
+    var qtePalavras = conteudo.split(" ").length;
+    $("#contador-palavras").text(qtePalavras);
+    
+    var qteCaracteres = conteudo.length;
+    $('#contador-caracteres').text(qteCaracteres);
+})
+```
+
+Ambas as funções `.val()` e `.text()` podem manipular os valores de texto dos elementos, mas a .val() funciona em elementos de `<input>` que são campos aonde o usuário do site insere dados , como os campos de `<input>` (todos os tipos), `<textarea>` e `<select>`.
+
+Já a função `.text()` pega o conteúdo de texto de tags HTML que tem texto dentro, como as `<h1>`, `<span>` e `<p>`
+
+Ambas as funções podem atribuir novos valores a determinados elementos, ou apenas pegar os valores deles.
