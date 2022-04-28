@@ -92,3 +92,129 @@ Ambas as funções `.val()` e `.text()` podem manipular os valores de texto dos 
 Já a função `.text()` pega o conteúdo de texto de tags HTML que tem texto dentro, como as `<h1>`, `<span>` e `<p>`
 
 Ambas as funções podem atribuir novos valores a determinados elementos, ou apenas pegar os valores deles.
+
+## Função `.one()`
+
+A função `.one`() funciona de modo semelhante a função `.on()`, ambas podem ser utilizadas em qualquer elemento, recebem qualquer evento como primeiro parâmetro e uma função anônima ou uma função nomeada como segundo parâmetro.
+
+A diferença entre elas é na hora de escutar os eventos, a função .one() escuta o evento apenas uma única vez, diferentemente da função on(), que como já vimos fica escutando o evento em um elemento do HTML por tempo ilimitado.
+
+## Função `.click()`
+
+A função `.click()` é uma função de atalho para a função `.on("click", ...)` . Ela tem o mesmo comportamento, apenas sendo um jeito mais curto e rápido de escrever a função.
+
+Os eventos mais comuns do jQuery possuem funções de atalho ( ou shorthand functions, como na documentação) , por exemplo as funções `.blur`, `.focus`, `.change`, `.dblclick` ...etc. Todos eles equivalem a chamada da função `on()` passando-os como parâmetro, e existem no jQuery apenas para facilitar a vida do desenvolvedor. As funções de atalho, assim como a função on devem receber uma função como parâmetro, que indica qual ação elas devem executar ao ouvirem o evento.
+
+## Função `.attr()` e `.removeAttr()`
+
+O método `.attr()` em jQuery é usado para definir ou retornar os atributos e valores dos elementos selecionados.
+
+PARÂMETROS: 
+
+**Atributo**: este parâmetro é usado para especificar o nome do atributo;
+
+**Valor**: é usado para especificar o valor do atributo;
+
+- Para retornar o valor de um atributo:
+```swift
+$(seletor).attr (atributo)
+```
+- Para definir o atributo e valor:
+```swift
+$(seletor).attr (atributo, valor)
+```
+- Para definir vários atributos e valores:
+```swift
+$(seletor).attr ({attribute: value, attribute: value, ...})
+```
+
+A função `.attr()` vai se comportar como uma outra função do jQuery, a `.removeAttr()`, que tem como objetivo remover atributos de elementos.
+
+## Função .css(), .addClass(), removeClass() e toggleClass()
+
+Podemos alterar o CSS de um elemento utilizando a função `.css()` do jQuery, passando por parâmetro a propriedade CSS queremos modificar e o seu valor, separados por vírgula. Também podemos obter o valor de uma propriedade específica utilizando somente ela como parâmetro.
+
+```swift
+// Retorna o valor da propriedade
+$("p").css("background-color");
+
+// Altera o valor da propriedade
+$("p").css("background-color", "yellow");
+$("p").css({"background-color": "yellow", "font-size": "200%"});
+```
+
+No entanto, sabemos que não é recomendado alterar as propriedades de estilo dentro de JavaScript, e sim no CSS. Por isso, uma forma melhor de realizar o mesmo processo, é adicionar uma classe ao elemento no HTML com `.addClass()`, e definir o estilo no arquivo  `.css` que será aplicado assim que a classe for adicionada. Da mesma forma, uma classe pode ser removida utilizando o `.removeClass()`
+
+```swift
+// CSS
+.important {
+  font-weight: bold;
+  font-size: xx-large;
+}
+
+.blue {
+  color: blue;
+}
+
+// JS
+$("button").click(function(){
+  $("h1, h2, p").addClass("blue");
+  $("div").removeClass("important");
+});
+```
+
+A função `.toggleClass()` por sua vez, faz a alternância entre adicionar e remover a classe especificada, dependendo do estado atual. Ela também pode receber um segundo parâmetro que define se quisermos adicionar (`true`) ou remover (`false`) a classe:
+
+```swift
+$("button").click(function(){
+  $("div").toggleClass("blue");
+  $("p").toggleClass("yellow", true);
+});
+```
+
+## .find()
+
+Quando queremos buscar filhos de um elemento, podemos utilizar a função `.find()` do jQuery, que funciona de modo semelhante a função seletora ($), porém fazendo a busca apenas do filho do elemento. A função recebe como parâmetro seletores CSS e busca em seus filhos algum elemento que atenda aquela busca. 
+
+```swift
+var corpoTabela = $(".nomeDaClasse").find("tbody");
+```
+
+## .append() e .prepend()
+
+A função `.append()` insere o conteúdo, especificado pelo parâmetro, no final de cada elemento no conjunto de elementos correspondentes. Já `prepend()` insere o conteúdo especificado no início dos elementos selecionados.
+
+```swift
+// HTML ANTES
+
+<h2>Greetings</h2>
+<div class="container">
+  <div class="inner">Hello</div>
+  <div class="inner">Goodbye</div>
+</div>
+```
+```Swift
+// JS
+$( ".inner" ).append( "<p>Test</p>" );
+
+// HTML DEPOIS
+<h2>Greetings</h2>
+<div class="container">
+  <div class="inner">
+    Hello
+    <p>Test</p>
+  </div>
+  <div class="inner">
+    Goodbye
+    <p>Test</p>
+  </div>
+</div>
+```
+
+## Criar um novo elemento HTML (DOM) pelo jQuery
+
+Para criarmos elementos do DOM com jQuery, devemos utilizar a própria função jQuery ($) , mas em vez de passarmos um id, classe, ou nome de um elemento para ela buscar, devemos passar uma tag HTML completa( com os sinais < e >), deste modo:
+
+```swift
+var itemDaLista = $("<li>");
+```

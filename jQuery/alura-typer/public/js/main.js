@@ -1,23 +1,78 @@
-// Função jQuery() = $()
-var frase = $(".frase").text();
-
-// Para contar as palavras:
-// Split separa a string utilizando o espaçi " " como ponto de corte, criando um array com as palavras, e .length conta os elementos do array criado
-var numeroDePalavras = frase.split(" ").length;
-
-var tamanhoFrase = $("#tamanho-frase");
-tamanhoFrase.text(numeroDePalavras);
-
-// Para identificar um evento de clique, utilizamos .on(evento, ação)
+var tempoInicial = $("#tempo-digitacao").text();
 var campo = $(".campo-digitacao");
 
-campo.on("input", function() {
-    var conteudo = campo.val();
-    var qtePalavras = conteudo.split(/\S+/).length - 1;
-    $("#contador-palavras").text(qtePalavras);
-    
-    var qteCaracteres = conteudo.length;
-    $('#contador-caracteres').text(qteCaracteres);
-})
+$(function() {
+    atualizaTamanhoFrase();
+    inicializaContadores();
+    inicializaCronometro();
+    inicializaMarcadores();
+    $("#botao-reiniciar").click(reiniciaJogo);
+});
 
-// conteudo.split(/\S+/).length - 1 utiliza expressão regular no lugar de " " para buscar espaços vazios, corrigindo o erro de contagem de palavras
+function atualizaTamanhoFrase() {
+    var frase = $(".frase").text();
+    var numPalavras  = frase.split(" ").length;
+    var tamanhoFrase = $("#tamanho-frase");
+
+    tamanhoFrase.text(numPalavras);
+}
+
+function inicializaContadores() {
+    campo.on("input", function() {
+        var conteudo = campo.val();
+
+        var qtdPalavras = conteudo.split(/\S+/).length - 1;
+        $("#contador-palavras").text(qtdPalavras);
+
+        var qtdCaracteres = conteudo.length;
+        $("#contador-caracteres").text(qtdCaracteres);
+    });
+}
+
+function inicializaMarcadores() {
+    var frase = $(".frase").text();
+    campo.on("input", function() {
+        var digitado = campo.val();
+        var comparavel = frase.substr(0, digitado.length);
+
+        if (digitado == comparavel) {
+            campo.addClass("borda-verde");
+            campo.removeClass("borda-vermelha");
+        } else {
+            campo.addClass("borda-vermelha");
+            campo.removeClass("borda-verde");
+        }
+    });
+}
+
+function inicializaCronometro() {
+    var tempoRestante = $("#tempo-digitacao").text();
+    campo.one("focus", function() {
+    	var cronometroID = setInterval(function() {
+    		tempoRestante--;
+    		$("#tempo-digitacao").text(tempoRestante);
+    		if (tempoRestante < 1) {
+                clearInterval(cronometroID);
+                finalizaJogo();
+    		}
+    	}, 1000);
+    });
+}
+
+function finalizaJogo() {
+    campo.attr("disabled", true);
+    campo.toggleClass("campo-desativado");
+    inserePlacar();
+}
+
+function reiniciaJogo() {
+    campo.attr("disabled", false);
+    campo.val("");
+    $("#contador-palavras").text(0);
+    $("#contador-caracteres").text(0);
+    $("#tempo-digitacao").text(tempoInicial);
+    inicializaCronometro();
+    campo.toggleClass("campo-desativado");
+    campo.removeClass("borda-vermelha");
+    campo.removeClass("borda-verde");
+}
