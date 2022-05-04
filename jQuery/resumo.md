@@ -26,7 +26,7 @@ A biblioteca jQuery deve ser inserida dentro da pasta do projeto e referenciada 
 <script src="js/main.js"></script>
 ```
 
-### ✅ Selecionando um elemento do HTML utilizando jQuery
+### 💲 Selecionando um elemento do HTML utilizando jQuery
 
  A função seletora do jQuery, que leva o próprio nome da framework, é responsável por selecionar no mundo jQuery. Dentro dessa função, passamos um seletor CSS - sinal gráfico `.` - que retorna o `objeto` desejado. Por exemplo, se queremos o elemento que contém a classe `frase`, podemos salvar essa função em uma variável que chamaremos de frase e depois verificá-la utilizando `console.log(frase)`.
 
@@ -58,7 +58,7 @@ var tamanhoFrase = $('#tamanho-frase');
 tamanhoFrase.text(numeroDePalavras);
 ```
 
-## Identificando eventos e texto inserido em um input
+## 🔛 Identificando eventos com `.on()` e texto inserido em um input com `.val()`
 
 A função `on()` do jQuery, recebe como parâmetro dois argumentos: O primeiro sendo uma string com o nome do evento que ela vai passar a escutar e o segundo uma função, com a ação (função) que ela deve executar quando o evento acontecer. O nome do evento são os nomes do eventos comuns do Javascript, como de `click`, `input`, `focus`, `dblclick` entre outros. Se quisermos por exemplo, ao digitar em um campo de `<textarea>` identificar qual o texto inserido dentro dela, contar as palavras e caracteres, podemos:
 - Após atribuir o campo de texto a uma variável utilizando sua classe, usar a função .on(), usar "input" para reconhecer o evento de digitar no campo, e chamar uma função;
@@ -93,19 +93,19 @@ Já a função `.text()` pega o conteúdo de texto de tags HTML que tem texto de
 
 Ambas as funções podem atribuir novos valores a determinados elementos, ou apenas pegar os valores deles.
 
-## Função `.one()`
+## 1️⃣ Função `.one()`
 
 A função `.one`() funciona de modo semelhante a função `.on()`, ambas podem ser utilizadas em qualquer elemento, recebem qualquer evento como primeiro parâmetro e uma função anônima ou uma função nomeada como segundo parâmetro.
 
 A diferença entre elas é na hora de escutar os eventos, a função .one() escuta o evento apenas uma única vez, diferentemente da função on(), que como já vimos fica escutando o evento em um elemento do HTML por tempo ilimitado.
 
-## Função `.click()`
+## 🖱 Função `.click()`
 
 A função `.click()` é uma função de atalho para a função `.on("click", ...)` . Ela tem o mesmo comportamento, apenas sendo um jeito mais curto e rápido de escrever a função.
 
 Os eventos mais comuns do jQuery possuem funções de atalho ( ou shorthand functions, como na documentação) , por exemplo as funções `.blur`, `.focus`, `.change`, `.dblclick` ...etc. Todos eles equivalem a chamada da função `on()` passando-os como parâmetro, e existem no jQuery apenas para facilitar a vida do desenvolvedor. As funções de atalho, assim como a função on devem receber uma função como parâmetro, que indica qual ação elas devem executar ao ouvirem o evento.
 
-## Função `.attr()` e `.removeAttr()`
+## ➕ Função `.attr()` e `.removeAttr()`
 
 O método `.attr()` em jQuery é usado para definir ou retornar os atributos e valores dos elementos selecionados.
 
@@ -130,7 +130,7 @@ $(seletor).attr ({attribute: value, attribute: value, ...})
 
 A função `.attr()` vai se comportar como uma outra função do jQuery, a `.removeAttr()`, que tem como objetivo remover atributos de elementos.
 
-## Função .css(), .addClass(), removeClass() e toggleClass()
+## 🔁 Função .css(), .addClass(), removeClass() e toggleClass()
 
 Podemos alterar o CSS de um elemento utilizando a função `.css()` do jQuery, passando por parâmetro a propriedade CSS queremos modificar e o seu valor, separados por vírgula. Também podemos obter o valor de uma propriedade específica utilizando somente ela como parâmetro.
 
@@ -172,7 +172,7 @@ $("button").click(function(){
 });
 ```
 
-## .find()
+## 🔎 .find()
 
 Quando queremos buscar filhos de um elemento, podemos utilizar a função `.find()` do jQuery, que funciona de modo semelhante a função seletora ($), porém fazendo a busca apenas do filho do elemento. A função recebe como parâmetro seletores CSS e busca em seus filhos algum elemento que atenda aquela busca. 
 
@@ -180,7 +180,7 @@ Quando queremos buscar filhos de um elemento, podemos utilizar a função `.find
 var corpoTabela = $(".nomeDaClasse").find("tbody");
 ```
 
-## .append() e .prepend()
+## 🧷 .append() e .prepend()
 
 A função `.append()` insere o conteúdo, especificado pelo parâmetro, no final de cada elemento no conjunto de elementos correspondentes. Já `prepend()` insere o conteúdo especificado no início dos elementos selecionados.
 
@@ -218,3 +218,107 @@ Para criarmos elementos do DOM com jQuery, devemos utilizar a própria função 
 ```swift
 var itemDaLista = $("<li>");
 ```
+
+# 🎬 ANIMAÇÕES E EFEITOS
+
+## 👀 Esconder e exibir elementos com `.show()`, `.hide()` e `.toggle()`
+
+O método `toggle()` alterna entre `hide()` e `show()` para os elementos selecionados. Este método verifica a visibilidade dos elementos selecionados. show() é executado se um elemento estiver oculto. hide() é executado se um elemento estiver visível, o que cria um efeito de alternância.
+
+```swift
+// Sintaxe: $(selector).toggle(speed,easing,callback)
+$("button").click(function(){
+  $("p").toggle();
+});
+
+```
+
+## 🪀 Deslizar com efeitos `slide`
+
+Essas funções criam um efeito de deslizamento para baixo com `.slideDown()`, para cima com `slideUp()` ou alternando entre os dois estados com `slideToggle()`.
+
+```swift
+// Sintaxe: $(selector).slideUp(speed,callback);
+
+$("#flip").click(function(){
+  $("#panel").slideDown();
+});
+
+$("#flip").click(function(){
+  $("#panel").slideToggle();
+});
+```
+
+## 👻 Esmaecer com efeitos `fade`
+
+Com as funções de slide é possível esmaecer os elementos para serem exibidos ou perderem a visibilidade. 
+
+- `.fadeIn()` faz um elemento oculto se tornar visível
+- `.fadeOut()` faz um elemento visível se tornar oculto
+- `.fadeToggle()` alterna o entre o estado visível e o estado oculto
+- `.fadeTo()` especifica um valor entre 0 (oculto) e 1 (visível) para definir a opacidade do elemento.
+
+```swift
+// Sintaxe: $(selector).fadeIn(speed,callback);
+
+$("button").click(function(){
+  $("#div1").fadeIn();
+  $("#div2").fadeOut("slow");
+  $("#div3").fadeToggle(3000);
+  $("#div4").fadeTo("slow", 0.15);
+```
+
+## 🧭 Descobrindo as coordenadas com `. offset()`
+
+O método `.offset()` define ou retorna as coordenadas de deslocamento para os elementos selecionados, em relação ao documento.
+
+- Quando usado para retornar o deslocamento: Este método retorna as coordenadas de deslocamento do **primeiro** elemento correspondente. Retorna um objeto com 2 propriedades; as posições superior e esquerda em pixels. Podemos adicionar `.top()` / `.left()` para receber somente a coordenada especificada.
+
+- Quando usado para definir o deslocamento: Este método define as coordenadas de deslocamento de **todos** os elementos correspondentes.
+
+```swift
+// Retornar as coordenadas:
+$(selector).offset()
+
+// Definir as coordenadas:
+$(selector).offset({top:value,left:value})
+
+// Definir as coordenadas usando uma função:
+$(selector).offset(function(index,currentoffset))
+```
+
+## 🛑 Interrompendo animações com `.stop()`
+
+A função `.stop()` é utilizada para interromper uma animação ou efeito antes que seja finalizado. Ela funciona para todas as funções de efeito jQuery, incluindo animações deslizantes, esmaecidas e personalizadas.
+
+A função .stop() serve para interromper uma animação antes de começar a próxima. Quando utilizamos a chamada de `.stop()` antes de invocar o próximo evento, fazemos com que a animação anterior seja interrompida antes de dar início a próxima. Associada com .slideToggle(), por exemplo,  ela impede que várias animações fiquem encadeadas uma nas outras e crie um menu que fica subindo e descendo constantemente caso o usuário acione repetidas vezes os eventos.
+
+O parâmetro opcional stopAll especifica se a fila de animação também deve ser limpa ou não. O padrão é false, o que significa que apenas a animação ativa será interrompida, permitindo que quaisquer animações enfileiradas sejam executadas posteriormente.
+
+O parâmetro opcional goToEnd especifica se a animação atual deve ou não ser concluída imediatamente. O padrão é falso.
+
+Portanto, por padrão, o método stop() elimina a animação atual que está sendo executada no elemento selecionado.
+```swift
+// SINTAXE: $(selector).stop(stopAll,goToEnd);
+$("#stop").click(function(){
+  $("#panel").stop();
+});
+
+// Exemplo: 
+$("#dropdown").mouseenter(function() {
+    $("#opcoes").stop().slideToggle();
+});
+
+$("#dropdown").mouseleave(function() {
+    $("#opcoes").stop().slideToggle();
+});
+```
+
+## 🧾 Induzindo a rolagem com .scroll()
+
+O evento `.scroll()` ocorre quando o usuário rola no elemento especificado, funciona para todos os elementos roláveis e o objeto de janela (janela do navegador). O método scroll() aciona o evento de rolagem ou anexa uma função para ser executada quando ocorre um evento de rolagem.
+```swift
+$(selector).scroll()
+$(selector).scroll(function)
+```
+## animate
