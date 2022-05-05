@@ -1,0 +1,107 @@
+/* cabecalho */
+
+.cabecalho {
+
+    background-image: url(../img/destaque.jpeg);
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: calc(max(100%, 480px));
+    position: relative;
+    color: var(--branco);
+
+    text-transform: uppercase;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.cabecalho__navegacao {
+    text-align: center;
+}
+
+.cabecalho__link {
+    margin: 0.1rem;
+    margin-top: .5rem;
+    display: inline-block;
+    padding: 1rem;
+    
+    
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    text-decoration: none;    
+    transition: 800ms;
+}
+
+.cabecalho__link:hover {
+    color: var(--branco);
+    background-color: var(--verde-turquesa);
+}
+
+.cabecalho__link a {
+    color: var(--branco);
+}
+
+/* chamada */
+
+.chamada {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    color: var(--branco);
+    text-align: center;
+
+}
+
+.chamada .chamada__titulo, .chamada__data {
+    text-shadow: 2px 2px 5px var(--preto);
+}
+
+.chamada__titulo {
+    font-size: 2rem;
+    text-transform: uppercase;
+    transition: 500ms;
+    font-weight: bold;
+
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.chamada__data {
+    color: var(--verde-neon);
+    font-size: 1.8rem;
+    transition: 500ms;
+}
+
+.chamada__botao {
+    font-weight: bolder;
+    display: inline-block;
+}
+
+.chamada__botao:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    transition: 800ms;
+}
+
+@media screen and (min-width: 650px) {
+    .chamada__titulo {
+        font-size: 5rem;
+        transition: 500ms;
+        }
+    .chamada__data {
+        font-size: 3.5rem;
+        transition: 500ms;
+    }
+}
+/*
+@media screen and (max-width: 375px) {
+    .chamada__titulo {
+        font-size: 2rem;
+        transition: 500ms;
+        }
+    .chamada__data {
+        font-size: 1rem;
+    }
+}*/
