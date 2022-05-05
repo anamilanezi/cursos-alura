@@ -36,7 +36,7 @@
 
 .cabecalho__link:hover {
     color: var(--branco);
-    background-color: var(--verde-turquesa);
+    background-color: var(--verde-botao);
 }
 
 .cabecalho__link a {
@@ -60,7 +60,7 @@
 }
 
 .chamada__titulo {
-    font-size: 2rem;
+    font-size: 3rem;
     text-transform: uppercase;
     transition: 500ms;
     font-weight: bold;
@@ -70,8 +70,8 @@
 }
 
 .chamada__data {
-    color: var(--verde-neon);
-    font-size: 1.8rem;
+    color: var(--verde-subtitulo);
+    font-size: 2.5rem;
     transition: 500ms;
 }
 
@@ -95,13 +95,15 @@
         transition: 500ms;
     }
 }
-/*
-@media screen and (max-width: 375px) {
+
+@media screen and (max-width: 350px) {
     .chamada__titulo {
         font-size: 2rem;
         transition: 500ms;
         }
     .chamada__data {
         font-size: 1rem;
+        transition: 500ms;
     }
-}*/
+}
+
