@@ -1,0 +1,54 @@
+.rodape {
+    background-color: var(--verde-subtitulo);
+    margin-top: 30px;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rodape__texto {
+    color: var(--verde-botao);
+    margin: 15px 0; 
+    width: 70%;
+    line-height: 1.5rem;
+}
+
+.rodape__link {
+    color: var(--verde-botao);
+    text-shadow: 1px 1px 2px var(--branco);
+    font-weight: bold;
+}
+
+.rodape__link:hover {
+    color: var(--branco);
+    text-shadow: 1px 1px 2px var(--verde-botao);
+}
+
+.rodape__autora {
+    font-size: 1.1rem;
+    color: var(--branco);
+    text-shadow: 3px 3px 10px var(--verde-botao);
+    margin-bottom: 10px;
+}
+
+.rodape__item {
+    display: inline-block;
+    margin: 5px 5px 20px 5px;
+}
+
+.rodape__img {
+    width: 50px;
+}
+
+.rodape__img:hover {
+    -webkit-filter: drop-shadow(5px 5px 5px var(--verde-botao));
+    filter: drop-shadow(5px 5px 5px var(--verde-botao));
+}
+
+@media screen and (min-width: 650px) {
+    .rodape__texto {
+        width: 40%;
+    }
+}

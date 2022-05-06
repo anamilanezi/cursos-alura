@@ -24,6 +24,10 @@
     box-shadow: 1px 1px 10px var(--verde-botao);
 }
 
+.painel__formulario--botao {
+    font-family: var(--montserrat);
+}
+
 .centralizar--botao {
     text-align: center;
 }
