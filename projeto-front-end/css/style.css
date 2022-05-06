@@ -40,3 +40,6 @@ ol, ul, li {
     transition: background-color 800ms;
 }
 
+button {
+    font-family: var(--montserrat);
+}
