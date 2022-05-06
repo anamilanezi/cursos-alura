@@ -3,8 +3,8 @@
     --preto: #000;
     --cinza: #89958b;
     --verde-botao: #46989D;
-    --verde-subtitulo: #A2D5AB;
-    --fundo-palestrantes: #F17248;
+    --verde-subtitulo: gold;
+    --fundo-palestrantes: #EF7247;
     --montserrat: 'Montserrat', sans-serif;
 }
 
@@ -29,11 +29,12 @@ ol, ul, li {
     background-color: var(--verde-botao);
     color: var(--branco);
     border-radius: 5px;
+    border: none;
 
     padding: 1rem;
     margin: 1em 0;
     width: 60%;
-    max-width: 250px;
+    max-width: 200px;
     
     text-transform: uppercase;
     transition: background-color 800ms;

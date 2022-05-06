@@ -1,0 +1,29 @@
+.painel__formulario--titulo {
+    text-transform: uppercase;
+    text-align: center;
+    padding: 1rem;
+    color: var(--fundo-palestrantes);
+    font-size: 1.2rem;
+}
+
+.painel__formulario--label {
+    display: inline-block;
+    font-weight: bold;
+    text-align: left;
+}
+
+.painel__formulario--input {
+    display: block;
+    width: 95%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.centralizar--botao {
+    text-align: center;
+}
+
+
+
+

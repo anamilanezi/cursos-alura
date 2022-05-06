@@ -5,6 +5,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    padding-bottom: 1.5rem;
 }
 
 .painel__palestrantes--titulo, .painel__palestrantes--subtitulo {
@@ -31,13 +33,17 @@
     margin: 10px;
     vertical-align: top;
 
-    border-radius: 10px;
+    border-radius: 20px;
     background-color: var(--branco);
 }
 
 .painel__palestrantes--img {
     border-radius: 50%;
     max-width: 100%;
+}
+
+.painel__palestrantes--palestrante {
+    margin-top: 20px;
 }
 
 .painel__palestrantes--bio {
