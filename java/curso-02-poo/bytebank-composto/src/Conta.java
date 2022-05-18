@@ -1,10 +1,10 @@
 // Atributos de uma conta: 
 
 class Conta { 
-    double saldo;
+    private double saldo;
     int agencia = 42;  
     int numero; 	  // 0 por padrão	
-    String titular;   // null por padrão
+    Cliente titular;   // null por padrão
    
 // MÉTODOS
     
@@ -38,6 +38,11 @@ class Conta {
     	} else {
     		return false;
     	}
+    }
+    
+/* Esse método permite verificar o saldo em um programa externo */    
+    public double getSaldo() { 
+        return this.saldo;
     }
     
     

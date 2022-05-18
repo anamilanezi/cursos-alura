@@ -6,7 +6,8 @@ public class TestaMetodo {
 		Conta contaDaAna = new Conta();
 		
 		contaDaAna.saldo = 100;
-		System.out.println("Saldo inicial de Ana: " + contaDaAna.saldo);
+		contaDaAna.titular = "Ana Milanezi";
+		System.out.println("Saldo inicial de " + contaDaAna.titular + " é " + contaDaAna.saldo);
 		
 		contaDaAna.deposita(50);
 		System.out.println("Saldo de Ana após primeiro depósito: " +contaDaAna.saldo);
