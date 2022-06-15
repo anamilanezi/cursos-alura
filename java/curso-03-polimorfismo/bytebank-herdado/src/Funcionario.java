@@ -1,13 +1,16 @@
-
-public class Funcionario {
+// Classe mãe / base class / super class
+// private (visivel apenas para classe mãe) > protected (visivel para mães e filhos) > public
+// Não podemos instanciar essa classe, pq é abstrata
+public abstract class Funcionario {
 
 	private String nome;
 	private String cpf;
 	private double salario;
+
+	// Método abstrato também não tem implementação, exige que sejam definidos nos filhos
+	public abstract double getBonificacao();
+		
 	
-	public double getBonificacao() {
-		return this.salario * 0.1;
-	}
 	
 	public String getNome() {
 		return this.nome;
